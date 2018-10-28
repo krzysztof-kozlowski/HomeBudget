@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text/>
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>16</x>
+      <y>200</y>
+      <w>232</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>HomeBudget
+-
+- userManager: UserManager
+- incomeManager *: IncomeManager
+- expenseManager *: ExpenseManager
+- fileNameWithIncomes: const string
+- fileNameWithExpenses: const string
+-
++ HomeBudget()
++ userRegistration(): void
++ userLogin(): integer
++ passwordChangeLoggedUser(): void
++ getIdLoggedUser(): integer
++ userLogout(): integer
+
++ addIncome(): void
++ addExpense():void
++ checkCurrentMonthBalance(): void
++ checkPreviousMonthBalance(): void
++ checkSelectedPeriodBalance(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>0</y>
+      <w>200</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>UserManager
+-
+- idLoggedUser: integer
+- users: vector &lt;User&gt;
+- fileWithUsers: FileWithUsers 
+-
++ UserManager()
++ userRegistration(): void
++ loadUsersFromFile(): void
++ userLogin(): integer
++ passwordChangeLoggedUser(): void
++ getIdLoggedUser(): integer
++ userLogout(): integer
+
+- enterDataOfNewUser(): User
+- isExistLogin(): bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>0</y>
+      <w>128</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>User
+-
+- id: integer
+- login: string
+- password: string
+- name: string
+- surname: string
+-
++ User()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>216</y>
+      <w>128</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Income
+-
+- incomeId: integer
+- userId: integer
+- date: integer
+- item: string
+- amount: double
+-
++ Income()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>424</y>
+      <w>128</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Expense
+-
+- expenseId: integer
+- userId: integer
+- date: integer
+- item: string
+- amount: double
+-
++ Expense()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>216</y>
+      <w>240</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>IncomeManager
+-
+- idLoggedUser: const integer
+- fileWithIncomes: FileWithIncomes
+- incomes: vector &lt;Income&gt;
+- timeManager: TimeManager
+-
++ IncomeManager()
++ addIncome(): void
++ loadIncomesLoggedUserFromFile(): void
++ calculateSumOfIncomes(): double
++ showIncomesList(): void
++ getStartBorderPeriod(): integer
++ getEndBorderPeriod(): integer
+
+- enterDataOfNewIncome(): void
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>216</y>
+      <w>256</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>FileWithIncomes
+-
+- fileNameWithIncomes: const string
+-
++ FileWithIncomes()
++ addIncomeToFile(): void
++ checkIdOfLastIncome(): integer
++ loadIncomesLoggedUserFromFile(): void
+
+- getIdOfLastIncome(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>640</y>
+      <w>152</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>File
+-
+
+-
+- isFileEmpty(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>640</y>
+      <w>208</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>TimeManager
+-
+- currentTime: integer
+- startBorderPeriod: integer
+- endBorderPeriod: integer
+-
++ TimeManager()
++ getCurrentTime(): integer
++ calculateStartBorderPeriod(): integer
++ calculateEndBorderPeriod(): integer
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>424</y>
+      <w>240</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>ExpenseManager
+-
+- idLoggedUser: const integer
+- fileWithExpenses: FileWithExpenses
+- expenses: vector &lt;Expense&gt;
+timeManager: TimeManager
+-
++ ExpenseManager()
++ addExpense(): void
++ checkIdOfLastExpense(): integer
++ loadExpensesLoggedUserFromFile(): void
++ calculateSumOfExpenses(): double
++ showExpensesList(): void
++ getStartBorderPeriod(): integer
++ getEndBorderPeriod(): integer
+
+- enterDataOfNewExpense(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>488</x>
+      <y>640</y>
+      <w>224</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>AuxiliaryMethods
+-
+
+-
++ sortRecordesListByDate(): void
++ conversionIntToString(): string
++ conversionStringToInt(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>0</y>
+      <w>328</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>FileWithUsers
+-
+- fileNameWithUsers: const string
+-
++ FileWithUsers()
++ addUserToFile(): void
++ loadUsersFromFile: vector &lt;User&gt;
++ saveAllUsersToFile(): void
+
+- getUserData(): User
+- deleteReadingFile(): void
+- changeNameOfTemporaryFileForNameOfReadingFile(): void
+- getIdOfLastUser(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>424</y>
+      <w>256</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>FileWithExpenses
+-
+- fileNameWithExpenses: const string
+-
++ FileWithExpenses()
++ addExpenseToFile(): void
++ checkIdOfLastExpense(): integer
++ loadExpensesLoggedUserFromFile(): void
+
+- getIdOfLastExpense(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
