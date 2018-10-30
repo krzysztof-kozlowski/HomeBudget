@@ -6,10 +6,7 @@ using namespace std;
 int main()
 {
     UserManager userManager;
-    userManager.userRegistration();
-    userManager.wyswietlUzytkownikow();
-        userManager.userRegistration();
-    userManager.wyswietlUzytkownikow();
 
+    userManager.userRegistration();
     return 0;
 }

@@ -5,13 +5,14 @@
 #include <vector>
 
 #include "User.h"
+#include "FileWithUsers.h"
 
 using namespace std;
 
 class UserManager {
     int idLoggedUser;
     vector <User> users;
-    //FileWithUsers fileWithUsers;
+    FileWithUsers fileWithUsers;
 
     User enterDataOfNewUser();
     int getIdOfNewUser();
