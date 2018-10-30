@@ -4,7 +4,7 @@ void UserManager::userRegistration() {
     User user = enterDataOfNewUser();
 
     users.push_back(user);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -53,13 +53,6 @@ bool UserManager::isExistLogin(string login) {
 }
 
 /*
-void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
-    for (int i = 0; i < uzytkownicy.size(); i++) {
-        cout << uzytkownicy[i].pobierzId() << endl;
-        cout << uzytkownicy[i].pobierzLogin() << endl;
-        cout << uzytkownicy[i].pobierzHaslo() << endl;
-    }
-}
 
 void UzytkownikMenadzer::wczytajUzytkownikowZPliku(){
     this->idZalogowanegoUzytkownika = 0;
