@@ -37,16 +37,16 @@ vector <User> FileWithUsers::loadUsersFromFile() {
     while (xml.FindElem("INFO")) {
         xml.IntoElem();
         xml.FindElem("ID");
-        MCD_STR strId = xml.GetData();
+        string strId = xml.GetData();
         int id = AuxMethods::conversionStringToInt(strId);
         xml.FindElem("LOGIN");
-        MCD_STR login = xml.GetData();
+        string login = xml.GetData();
         xml.FindElem("PASSWORD");
-        MCD_STR password = xml.GetData();
+        string  password = xml.GetData();
         xml.FindElem("NAME");
-        MCD_STR name = xml.GetData();
+        string name = xml.GetData();
         xml.FindElem("SURNAME");
-        MCD_STR surname = xml.GetData();
+        string surname = xml.GetData();
         xml.OutOfElem();
 
         User user(id, login, password, name, surname);
