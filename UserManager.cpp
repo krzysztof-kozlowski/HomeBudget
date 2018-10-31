@@ -52,13 +52,22 @@ bool UserManager::isExistLogin(string login) {
     return false;
 }
 
-/*
-
-void UzytkownikMenadzer::wczytajUzytkownikowZPliku(){
-    this->idZalogowanegoUzytkownika = 0;
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+void UserManager::loadUsersFromFile(){
+    this->idLoggedUser = 0;
+    users = fileWithUsers.loadUsersFromFile();
 }
 
+void UserManager::wyswietl(){
+    for(int i = 0; i < users.size(); i++){
+        cout << users[i].getId() << endl;
+        cout << users[i].getLogin() << endl;
+        cout << users[i].getPassword() << endl;
+        cout << users[i].getName() << endl;
+        cout << users[i].getSurname() << endl;
+    }
+}
+
+/*
 int UzytkownikMenadzer::logowanieUzytkownika(){
     string login = "", haslo = "";
 

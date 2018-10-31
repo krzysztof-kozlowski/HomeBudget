@@ -25,24 +25,56 @@ void FileWithUsers::putDataUserIntoFile(User user, CMarkup& xml) {
     xml.AddElem("NAME", user.getName());
     xml.AddElem("SURNAME", user.getSurname());
 }
+
+vector <User> FileWithUsers::loadUsersFromFile() {
+    CMarkup xml;
+    vector <User> users;
+
+    xml.Load("users.xml");
+    xml.ResetPos();
+    xml.FindElem();
+    xml.IntoElem();
+    while ( xml.FindElem("INFO") ) {
+        xml.IntoElem();
+        xml.FindElem("ID");
+        MCD_STR strId = xml.GetData();
+        int id = konwersjaStringNaInt(strId);
+        xml.FindElem("LOGIN");
+        MCD_STR login = xml.GetData();
+        xml.FindElem("PASSWORD");
+        MCD_STR password = xml.GetData();
+        xml.FindElem("NAME");
+        MCD_STR name = xml.GetData();
+        xml.FindElem("SURNAME");
+        MCD_STR surname = xml.GetData();
+        xml.OutOfElem();
+
+        User user(id, login, password, name, surname);
+        users.push_back(user);
+    }
+    return users;
+}
+
+int FileWithUsers::konwersjaStringNaInt(string liczba) {
+    int liczbaInt;
+    istringstream iss(liczba);
+    iss >> liczbaInt;
+
+    return liczbaInt;
+}
 /*
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
     string liniaZDanymiUzytkownika = "";
-
     liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
     liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
     liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-
     return liniaZDanymiUzytkownika;
 }
-
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
     fstream plikTekstowy;
     vector <Uzytkownik> uzytkownicy;
     string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
-
     if (plikTekstowy.good() == true)
     {
         while (getline(plikTekstowy, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
@@ -54,14 +86,12 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
     }
     return uzytkownicy;
 }
-
 Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
 {
     int id;
     string login, haslo;
     string pojedynczaDanaUzytkownika = "";
     int numerPojedynczejDanejUzytkownika = 1;
-
     for (int pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++)
     {
         if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
@@ -89,17 +119,13 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
     Uzytkownik uzytkownik(id, login, haslo);
     return uzytkownik;
 }
-
 void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy){
     fstream plikTekstowy;
     string liniaZDanymiUzytkownika = "";
-
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::out);
-
     if (plikTekstowy.good() == true){
         for (int i = 0; i < uzytkownicy.size(); i++){
                 liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownicy[i]);
-
                 if (i > uzytkownicy.size()) {
                     plikTekstowy << liniaZDanymiUzytkownika;
                 } else {
