@@ -8,7 +8,7 @@ int main() {
 
     //userManager.userRegistration();
     userManager.loadUsersFromFile();
-    userManager.wyswietl();
+    userManager.userLogin();
 
     return 0;
 }
