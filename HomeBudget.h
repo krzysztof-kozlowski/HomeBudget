@@ -17,8 +17,8 @@ class HomeBudget {
     const string fileNameWithExpenses;
 
 public:
-    HomeBudget(string fileNameWithUsers, string FILENAMEWITHINCOMES, string FILENAMEWITHEXPENSES) :
-        userManager(fileNameWithUsers), fileNameWithIncomes(FILENAMEWITHINCOMES), fileNameWithExpenses(FILENAMEWITHEXPENSES){};
+    /*HomeBudget(string fileNameWithUsers, string FILENAMEWITHINCOMES, string FILENAMEWITHEXPENSES) :
+        userManager(fileNameWithUsers), fileNameWithIncomes(FILENAMEWITHINCOMES), fileNameWithExpenses(FILENAMEWITHEXPENSES){};*/
     void userRegistration();
     void userLogin();
     void passwordChangeLoggedUser();
