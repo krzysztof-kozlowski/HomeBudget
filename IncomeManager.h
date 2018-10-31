@@ -8,20 +8,20 @@
 
 #include "Income.h"
 #include "UserManager.h"
-//#include "FileWithIncomes.h"
+#include "FileWithIncomes.h"
 
 class IncomeManager {
     const int idLoggedUser;
-    //FileWithIncomes fileWithIncomes;
+    FileWithIncomes fileWithIncomes;
     vector <Income> incomes;
     //TimeManager timeManager;
 
     void enterDataOfNewIncome();
 
 public:
-    /*IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
-        fileNameWithIncomes.loadIncomesFromFile(idLoggedUser, users);
-    };*/
+    IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
+        //fileNameWithIncomes.loadIncomesFromFile(idLoggedUser, users);
+    };
     void addIncome();
     void loadIncomesLoggedUserFromFile();
     double calculateSumOfIncomes();

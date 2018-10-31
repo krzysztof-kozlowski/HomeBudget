@@ -7,7 +7,7 @@ void HomeBudget::userRegistration() {
 void HomeBudget::userLogin() {
     userManager.userLogin();
     if (userManager.getIdLoggedUser()) {
-        //incomeManager = new IncomeManager(fileNameWithIncomes, userManager.getIdLoggedUser());
+        incomeManager = new IncomeManager(fileNameWithIncomes, userManager.getIdLoggedUser());
         //expenseManager = new ExpenseManager(fileNameWithExpenses, userManager.getIdLoggedUser());
     }
 }
