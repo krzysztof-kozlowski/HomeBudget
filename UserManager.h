@@ -19,10 +19,10 @@ class UserManager {
     bool isExistLogin(string login);
 
 public:
-    /*UserManager(string fileNameWithUsers) : fileWithUsers(fileNameWithUsers) {
+    UserManager(string fileNameWithUsers) : fileWithUsers(fileNameWithUsers) {
         idLoggedUser = 0;
         users = fileWithUsers.loadUsersFromFile();
-    };*/
+    };
     void userRegistration();
     void loadUsersFromFile();
     int userLogin();

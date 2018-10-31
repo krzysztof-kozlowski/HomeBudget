@@ -7,8 +7,8 @@ void HomeBudget::userRegistration() {
 void HomeBudget::userLogin() {
     userManager.userLogin();
     if (userManager.getIdLoggedUser()) {
-        incomeManager = new IncomeManager(fileNameWithIncomes, userManager.getIdLoggedUser());
-        expenseManager = new ExpenseManager(fileNameWithExpenses, userManager.getIdLoggedUser());
+        //incomeManager = new IncomeManager(fileNameWithIncomes, userManager.getIdLoggedUser());
+        //expenseManager = new ExpenseManager(fileNameWithExpenses, userManager.getIdLoggedUser());
     }
 }
 
@@ -23,5 +23,5 @@ int HomeBudget::getIdLoggedUser() {
 int HomeBudget::userLogout() {
     userManager.userLogout();
     delete incomeManager;
-    delete expenseManager;
+    //delete expenseManager;
 }

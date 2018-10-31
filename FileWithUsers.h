@@ -13,14 +13,14 @@
 using namespace std;
 
 class FileWithUsers /*: private Plik*/ {
-    const string nazwaPlikuZUzytkownikami;
+    const string fileNameWithUsers;
 
     void putDataUserIntoFile(User user, CMarkup& xml);
     //string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
     //Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
 public:
-    //PlikZUzytkownikami(string NAZWAPLIKUZUZYTKOWNIKAMI): nazwaPlikuZUzytkownikami(NAZWAPLIKUZUZYTKOWNIKAMI) {};
+    FileWithUsers(string FILENAMEWITHUSERS): fileNameWithUsers(FILENAMEWITHUSERS) {};
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void saveAllUsersToFile(vector <User> &users);
