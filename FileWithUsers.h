@@ -23,7 +23,7 @@ public:
     //PlikZUzytkownikami(string NAZWAPLIKUZUZYTKOWNIKAMI): nazwaPlikuZUzytkownikami(NAZWAPLIKUZUZYTKOWNIKAMI) {};
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
-    //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy);
+    void saveAllUsersToFile(vector <User> &users);
 };
 
 #endif // FILEWITHUSERS_H
