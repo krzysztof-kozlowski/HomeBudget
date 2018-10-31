@@ -38,7 +38,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
         xml.IntoElem();
         xml.FindElem("ID");
         MCD_STR strId = xml.GetData();
-        int id = konwersjaStringNaInt(strId);
+        int id = AuxMethods::conversionStringToInt(strId);
         xml.FindElem("LOGIN");
         MCD_STR login = xml.GetData();
         xml.FindElem("PASSWORD");
@@ -53,14 +53,6 @@ vector <User> FileWithUsers::loadUsersFromFile() {
         users.push_back(user);
     }
     return users;
-}
-
-int FileWithUsers::konwersjaStringNaInt(string liczba) {
-    int liczbaInt;
-    istringstream iss(liczba);
-    iss >> liczbaInt;
-
-    return liczbaInt;
 }
 /*
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
