@@ -3,10 +3,12 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     UserManager userManager;
 
-    userManager.userRegistration();
+    //userManager.userRegistration();
+    userManager.loadUsersFromFile();
+    userManager.wyswietl();
+
     return 0;
 }
