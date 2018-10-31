@@ -10,6 +10,7 @@ using namespace std;
 class AuxMethods {
 public:
     static int conversionStringToInt(string word);
+    static string changeFirstLetterOnUpperRestOnLower(string content);
 };
 
 #endif // AUXMETHODS_H

@@ -35,7 +35,7 @@ User UserManager::enterDataOfNewUser() {
     cin.sync();
     getline(cin, surname);
 
-    User user(id, login, password, name, surname);
+    User user(id, login, password, AuxMethods::changeFirstLetterOnUpperRestOnLower(name), AuxMethods::changeFirstLetterOnUpperRestOnLower(surname));
     return user;
 }
 
