@@ -16,20 +16,24 @@ User UserManager::enterDataOfNewUser() {
     string login;
     do {
         cout << "Podaj login: ";
-        cin >> login;
+        cin.sync();
+        getline(cin, login);
     } while (isExistLogin(login) == true);
 
     string password;
     cout << "Podaj haslo: ";
-    cin >> password;
+    cin.sync();
+    getline(cin, password);
 
     string name;
     cout << "Podaj imie: ";
-    cin >> name;
+    cin.sync();
+    getline(cin, name);
 
     string surname;
     cout << "Podaj nazwisko: ";
-    cin >> surname;
+    cin.sync();
+    getline(cin, surname);
 
     User user(id, login, password, name, surname);
     return user;
@@ -61,13 +65,15 @@ int UserManager::userLogin() {
     string login = "", password = "";
 
     cout << endl << "Podaj login: ";
-    cin >> login;
+    cin.sync();
+    getline(cin, login);
 
     for (int i = 0; i < users.size(); i++) {
         if (users[i].getLogin() == login) {
             for (int attemptsNumber = 3; attemptsNumber > 0; attemptsNumber--) {
                 cout << "Podaj haslo. Pozostalo prob: " << attemptsNumber << ": ";
-                cin >> password;
+                cin.sync();
+                getline(cin, password);
 
                 if (users[i].getPassword() == password) {
                     cout << endl << "Zalogowales sie." << endl << endl;
@@ -84,6 +90,30 @@ int UserManager::userLogin() {
     system("pause");
     return 0;
 }
+
+void UserManager::passwordChangeLoggedUser(){
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    cin.sync();
+    getline(cin, newPassword);
+
+    for (int i = 0; i < users.size(); i++){
+        if (users[i].getId() == idLoggedUser){
+            users[i].setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.saveAllUsersToFile(users);
+}
+
+void UserManager::wyswietl(){
+    for(int i = 0; i < users.size(); i++){
+        cout << users[i].getLogin() << endl;
+    }
+}
+
+
 
 /*
 void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika(){

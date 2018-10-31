@@ -34,7 +34,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();
-    while ( xml.FindElem("INFO") ) {
+    while (xml.FindElem("INFO")) {
         xml.IntoElem();
         xml.FindElem("ID");
         MCD_STR strId = xml.GetData();
@@ -54,6 +54,31 @@ vector <User> FileWithUsers::loadUsersFromFile() {
     }
     return users;
 }
+
+void FileWithUsers::saveAllUsersToFile(vector <User> &users) {
+    CMarkup xml;
+
+    xml.Load("users.xml");
+    xml.ResetPos();
+    xml.FindElem();
+    xml.RemoveElem();
+    xml.AddElem("USER");
+    xml.IntoElem();
+
+    for(int i = 0; i < users.size(); i++) {
+        xml.AddElem("INFO");
+        xml.IntoElem();
+        xml.AddElem("ID", users[i].getId());
+        xml.AddElem("LOGIN", users[i].getLogin());
+        xml.AddElem("PASSWORD", users[i].getPassword());
+        xml.AddElem("NAME", users[i].getName());
+        xml.AddElem("SURNAME", users[i].getSurname());
+        xml.OutOfElem();
+    }
+    xml.Save("users.xml");
+}
+
+
 /*
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
     string liniaZDanymiUzytkownika = "";
@@ -111,7 +136,7 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
     Uzytkownik uzytkownik(id, login, haslo);
     return uzytkownik;
 }
-void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy){
+void PlikZUzytkownikami::saveAllUsersToFile(vector <User> &users){
     fstream plikTekstowy;
     string liniaZDanymiUzytkownika = "";
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::out);
