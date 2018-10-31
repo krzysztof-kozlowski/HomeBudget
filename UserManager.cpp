@@ -52,39 +52,28 @@ bool UserManager::isExistLogin(string login) {
     return false;
 }
 
-void UserManager::loadUsersFromFile(){
+void UserManager::loadUsersFromFile() {
     this->idLoggedUser = 0;
     users = fileWithUsers.loadUsersFromFile();
 }
 
-void UserManager::wyswietl(){
-    for(int i = 0; i < users.size(); i++){
-        cout << users[i].getId() << endl;
-        cout << users[i].getLogin() << endl;
-        cout << users[i].getPassword() << endl;
-        cout << users[i].getName() << endl;
-        cout << users[i].getSurname() << endl;
-    }
-}
-
-/*
-int UzytkownikMenadzer::logowanieUzytkownika(){
-    string login = "", haslo = "";
+int UserManager::userLogin() {
+    string login = "", password = "";
 
     cout << endl << "Podaj login: ";
     cin >> login;
 
-    for (int i = 0; i < uzytkownicy.size(); i++) {
-        if (uzytkownicy[i].pobierzLogin() == login) {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
-                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                cin >> haslo;
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getLogin() == login) {
+            for (int attemptsNumber = 3; attemptsNumber > 0; attemptsNumber--) {
+                cout << "Podaj haslo. Pozostalo prob: " << attemptsNumber << ": ";
+                cin >> password;
 
-                if (uzytkownicy[i].pobierzHaslo() == haslo) {
+                if (users[i].getPassword() == password) {
                     cout << endl << "Zalogowales sie." << endl << endl;
-                    this->idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
+                    this->idLoggedUser = users[i].getId();
                     system("pause");
-                    return uzytkownicy[i].pobierzId();
+                    return users[i].getId();
                 }
             }
             cout << endl << "Wpisales 3 razy zle haslo." << endl;
@@ -96,6 +85,7 @@ int UzytkownikMenadzer::logowanieUzytkownika(){
     return 0;
 }
 
+/*
 void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika(){
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
