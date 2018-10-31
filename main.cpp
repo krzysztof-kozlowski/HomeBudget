@@ -1,18 +1,10 @@
 #include <iostream>
-#include "UserManager.h"
+#include "HomeBudget.h"
 
 using namespace std;
 
 int main() {
-    UserManager userManager;
-
-    userManager.userRegistration();
-    userManager.loadUsersFromFile();
-
-    userManager.wyswietl();
-    userManager.userLogin();
-
-    userManager.passwordChangeLoggedUser();
+    HomeBudget homebudget("users.xml", "incomes.xml");
 
     return 0;
 }

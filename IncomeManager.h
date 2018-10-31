@@ -19,7 +19,7 @@ class IncomeManager {
     void enterDataOfNewIncome();
 
 public:
-    /*IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : plikZAdresatami(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
+    /*IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
         fileNameWithIncomes.loadIncomesFromFile(idLoggedUser, users);
     };*/
     void addIncome();

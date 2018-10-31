@@ -107,11 +107,20 @@ void UserManager::passwordChangeLoggedUser(){
     fileWithUsers.saveAllUsersToFile(users);
 }
 
+int UserManager::getIdLoggedUser(){
+    return idLoggedUser;
+}
+
+int UserManager::userLogout(){
+    this->idLoggedUser = 0;
+}
+
 void UserManager::wyswietl(){
     for(int i = 0; i < users.size(); i++){
         cout << users[i].getLogin() << endl;
     }
 }
+
 
 
 
@@ -131,11 +140,7 @@ void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika(){
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika(){
-    return idZalogowanegoUzytkownika;
-}
 
-int UzytkownikMenadzer::wyloguj(){
-    this->idZalogowanegoUzytkownika = 0;
-}
+
+
 */
