@@ -3,13 +3,12 @@
 
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <sstream>
 
 #include "Markup.h"
 #include "User.h"
+#include "AuxMethods.h"
 //#include "Plik.h"
-//#include "MetodyPomocnicze.h"
+
 
 using namespace std;
 
@@ -17,7 +16,6 @@ class FileWithUsers /*: private Plik*/ {
     const string nazwaPlikuZUzytkownikami;
 
     void putDataUserIntoFile(User user, CMarkup& xml);
-    int konwersjaStringNaInt(string liczba);
     //string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
     //Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
