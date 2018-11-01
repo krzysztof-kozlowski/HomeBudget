@@ -18,12 +18,12 @@ Income IncomeManager::enterDataOfNewIncome() {
     double amount;
     char dateDecision;
 
-    cout << "Czy przychod dotyczy dzisiejszej daty: <t/n> ";
+    cout << "Czy przychod dotyczy dzisiejszej daty <t/n>: ";
     cin >> dateDecision;
     if (dateDecision == 't')
-        ;//date = timeManager.getCurrentTime();
-    else
-        ;//date = enterDate();
+        date = timeManager.getCurrentTime();
+    else if (dateDecision == 'n')
+        date = enterDate();
 
     cout << "Wpisz czego dotyczy ten przychod: ";
     cin.sync();
@@ -37,7 +37,16 @@ Income IncomeManager::enterDataOfNewIncome() {
 }
 
 int IncomeManager::enterDate() {
-    cout << "Wpisz wysokosc przychodu: ";
+    string date;
+
+    do {
+        cout << "Wpisz date <rrrr-mm-dd>: ";
+        cin.sync();
+        getline(cin, date);
+    } while(!timeManager.isCorrectDate(date));
+
+
+
 }
 
 double IncomeManager::enterAmount() {
