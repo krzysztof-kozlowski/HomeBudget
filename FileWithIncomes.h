@@ -5,8 +5,9 @@
 
 #include "Markup.h"
 #include "Income.h"
+#include "AuxMethods.h"
 
-class FileWithIncomes { /*: private Plik*/
+class FileWithIncomes {
     const string fileNameWithIncomes;
 
     int getIdOfLastIncome();

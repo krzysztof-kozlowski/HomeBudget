@@ -7,17 +7,13 @@
 #include "Markup.h"
 #include "User.h"
 #include "AuxMethods.h"
-//#include "Plik.h"
-
 
 using namespace std;
 
-class FileWithUsers /*: private Plik*/ {
+class FileWithUsers {
     const string fileNameWithUsers;
 
     void putDataUserIntoFile(User user, CMarkup& xml);
-    //string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
-    //Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
 public:
     FileWithUsers(string FILENAMEWITHUSERS): fileNameWithUsers(FILENAMEWITHUSERS) {};

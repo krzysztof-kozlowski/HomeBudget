@@ -116,11 +116,9 @@ int TimeManager::calculateManualDateToSeconds(string date) {
                 seconds += 28 * 60 *60 * 24;
         }
     }
-
     for (int i = 1; i < day; i++) {
         seconds += 60 * 60 * 24;
     }
-
     return seconds;
 }
 

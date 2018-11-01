@@ -3,13 +3,13 @@
 void FileWithUsers::addUserToFile(User user) {
     CMarkup xml;
 
-    if (xml.Load("users.xml") == false) {
+    if (xml.Load(fileNameWithUsers) == false) {
         xml.AddElem("USER");
         putDataUserIntoFile(user, xml);
-        xml.Save("users.xml");
+        xml.Save(fileNameWithUsers);
     } else {
         putDataUserIntoFile(user, xml);
-        xml.Save("users.xml");
+        xml.Save(fileNameWithUsers);
     }
 }
 
@@ -30,7 +30,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
     CMarkup xml;
     vector <User> users;
 
-    xml.Load("users.xml");
+    xml.Load(fileNameWithUsers);
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();
@@ -58,7 +58,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
 void FileWithUsers::saveAllUsersToFile(vector <User> &users) {
     CMarkup xml;
 
-    xml.Load("users.xml");
+    xml.Load(fileNameWithUsers);
     xml.ResetPos();
     xml.FindElem();
     xml.RemoveElem();
@@ -75,84 +75,5 @@ void FileWithUsers::saveAllUsersToFile(vector <User> &users) {
         xml.AddElem("SURNAME", users[i].getSurname());
         xml.OutOfElem();
     }
-    xml.Save("users.xml");
+    xml.Save(fileNameWithUsers);
 }
-
-
-/*
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
-    string liniaZDanymiUzytkownika = "";
-    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-    return liniaZDanymiUzytkownika;
-}
-vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
-    fstream plikTekstowy;
-    vector <Uzytkownik> uzytkownicy;
-    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
-    if (plikTekstowy.good() == true)
-    {
-        while (getline(plikTekstowy, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
-        {
-            Uzytkownik uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
-            uzytkownicy.push_back(uzytkownik);
-        }
-        plikTekstowy.close();
-    }
-    return uzytkownicy;
-}
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
-{
-    int id;
-    string login, haslo;
-    string pojedynczaDanaUzytkownika = "";
-    int numerPojedynczejDanejUzytkownika = 1;
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++)
-    {
-        if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
-        {
-            pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
-        }
-        else
-        {
-            switch(numerPojedynczejDanejUzytkownika)
-            {
-            case 1:
-                id = atoi(pojedynczaDanaUzytkownika.c_str());
-                break;
-            case 2:
-                login = pojedynczaDanaUzytkownika;
-                break;
-            case 3:
-                haslo = pojedynczaDanaUzytkownika;
-                break;
-            }
-            pojedynczaDanaUzytkownika = "";
-            numerPojedynczejDanejUzytkownika++;
-        }
-    }
-    Uzytkownik uzytkownik(id, login, haslo);
-    return uzytkownik;
-}
-void PlikZUzytkownikami::saveAllUsersToFile(vector <User> &users){
-    fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::out);
-    if (plikTekstowy.good() == true){
-        for (int i = 0; i < uzytkownicy.size(); i++){
-                liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownicy[i]);
-                if (i > uzytkownicy.size()) {
-                    plikTekstowy << liniaZDanymiUzytkownika;
-                } else {
-                    plikTekstowy << liniaZDanymiUzytkownika << endl;
-                }
-                liniaZDanymiUzytkownika = "";
-        }
-        plikTekstowy.close();
-    } else {
-        cout << "Nie mozna otworzyc pliku " << nazwaPlikuZUzytkownikami << endl;
-    }
-}
-*/
