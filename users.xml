@@ -6,4 +6,11 @@
 <NAME>Krzysztof</NAME>
 <SURNAME>Kozlowski</SURNAME>
 </INFO>
+<INFO>
+<ID>2</ID>
+<LOGIN>bia</LOGIN>
+<PASSWORD>2</PASSWORD>
+<NAME>Bianka</NAME>
+<SURNAME>Kozlowska</SURNAME>
+</INFO>
 </USER>

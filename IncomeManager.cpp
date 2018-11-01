@@ -6,7 +6,7 @@ void IncomeManager::addIncome() {
     Income income = enterDataOfNewIncome();
 
     incomes.push_back(income);
-    fileWithIncomes.addIncomeToFile();
+    fileWithIncomes.addIncomeToFile(income);
 }
 
 Income IncomeManager::enterDataOfNewIncome() {
@@ -28,7 +28,6 @@ Income IncomeManager::enterDataOfNewIncome() {
     cout << "Wpisz czego dotyczy ten przychod: ";
     cin.sync();
     getline(cin, item);
-
     amount = enterAmount();
 
     Income income(incomeId, userId, date, AuxMethods::changeFirstLetterOnUpperRestOnLower(item), amount);
