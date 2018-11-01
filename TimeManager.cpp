@@ -124,8 +124,5 @@ int TimeManager::calculateManualDateToSeconds(string date) {
     return seconds;
 }
 
-int TimeManager::calculateBorderPeriod() {
-    ;
-}
 
 

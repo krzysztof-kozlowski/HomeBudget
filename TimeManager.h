@@ -22,7 +22,6 @@ class TimeManager {
 
 public:
     int getCurrentTime();
-    int calculateBorderPeriod();
 
     bool isCorrectDate(string date);
     int calculateManualDateToSeconds(string date);

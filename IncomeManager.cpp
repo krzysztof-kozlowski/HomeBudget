@@ -45,12 +45,29 @@ int IncomeManager::enterDate() {
         getline(cin, date);
     } while(!timeManager.isCorrectDate(date));
 
-
-
+    return timeManager.calculateManualDateToSeconds(date);
 }
 
 double IncomeManager::enterAmount() {
-    ;
+    string strAmount;
+
+    cout << "Wpisz kwote przychodu: ";
+    cin.sync();
+    getline(cin, strAmount);
+
+    return checkValueOfAmount(strAmount);
+}
+
+double IncomeManager::checkValueOfAmount(string strAmount) {
+    for(int i = 0; i < strAmount.length(); i++) {
+        if (strAmount[i] == ',')
+            strAmount[i] = '.';
+    }
+
+    string::size_type sz;
+    double doubleAmount = stod(strAmount, &sz);
+
+    return doubleAmount;
 }
 
 void IncomeManager::loadIncomesLoggedUserFromFile() {

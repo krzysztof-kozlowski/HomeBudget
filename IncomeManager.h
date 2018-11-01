@@ -21,6 +21,7 @@ class IncomeManager {
     Income enterDataOfNewIncome();
     int enterDate();
     double enterAmount();
+    double checkValueOfAmount(string amount);
 
 public:
     IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
