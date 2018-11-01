@@ -9,6 +9,7 @@
 #include "Income.h"
 #include "UserManager.h"
 #include "FileWithIncomes.h"
+#include "AuxMethods.h"
 
 class IncomeManager {
     const int idLoggedUser;
@@ -16,7 +17,9 @@ class IncomeManager {
     vector <Income> incomes;
     //TimeManager timeManager;
 
-    void enterDataOfNewIncome();
+    Income enterDataOfNewIncome();
+    int enterDate();
+    double enterAmount();
 
 public:
     IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {

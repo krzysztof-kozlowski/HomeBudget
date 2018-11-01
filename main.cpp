@@ -35,7 +35,7 @@ int main() {
 
                 switch (choice) {
                 case '1':
-                    ;
+                    homeBudget.addIncome();
                     break;
                 case '2':
                     ;
