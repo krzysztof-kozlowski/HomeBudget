@@ -2,6 +2,8 @@
 #define FILEWITHINCOMES_H
 
 #include <iostream>
+#include <sstream>
+#include <iomanip>
 
 #include "Markup.h"
 #include "Income.h"
@@ -12,12 +14,13 @@ class FileWithIncomes {
 
     int getIdOfLastIncome();
     void putDataIncomeIntoFile(Income income, CMarkup& xml);
+    Income getIncomeInfoFromFile(CMarkup& xml);
 
 public:
     FileWithIncomes(string FILENAMEWITHINCOMES): fileNameWithIncomes(FILENAMEWITHINCOMES) {};
     void addIncomeToFile(Income income);
     int checkIdOfLastIncome();
-    void loadIncomesLoggedUserFromFile();
+    void loadIncomesLoggedUserFromFile(vector <Income> &incomes, int idLoggedUser);
 };
 
 #endif // FILEWITHINCOMES_H

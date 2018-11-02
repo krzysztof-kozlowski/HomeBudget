@@ -6,9 +6,9 @@
 #include <windows.h>
 #include <sstream>
 
+#include "FileWithIncomes.h"
 #include "Income.h"
 #include "UserManager.h"
-#include "FileWithIncomes.h"
 #include "TimeManager.h"
 #include "AuxMethods.h"
 
@@ -25,10 +25,9 @@ class IncomeManager {
 
 public:
     IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
-        //fileNameWithIncomes.loadIncomesLoggedUserFromFile(idLoggedUser, users);
+        fileWithIncomes.loadIncomesLoggedUserFromFile(incomes, idLoggedUser);
     };
     void addIncome();
-    void loadIncomesLoggedUserFromFile();
     double calculateSumOfIncomes();
     void showIncomesList();
     int getStartBorderPeriod();

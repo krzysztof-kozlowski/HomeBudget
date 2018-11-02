@@ -69,10 +69,6 @@ double IncomeManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-void IncomeManager::loadIncomesLoggedUserFromFile() {
-    ;
-}
-
 double IncomeManager::calculateSumOfIncomes() {
     ;
 }
