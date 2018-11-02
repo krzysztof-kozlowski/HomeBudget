@@ -24,6 +24,9 @@ public:
     void passwordChangeLoggedUser();
     int getIdLoggedUser();
     int userLogout();
+
+    void addIncome();
+
 };
 
 #endif // HOMEBUDGET_H

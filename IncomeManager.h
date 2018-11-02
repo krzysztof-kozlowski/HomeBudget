@@ -6,24 +6,28 @@
 #include <windows.h>
 #include <sstream>
 
+#include "FileWithIncomes.h"
 #include "Income.h"
 #include "UserManager.h"
-#include "FileWithIncomes.h"
+#include "TimeManager.h"
+#include "AuxMethods.h"
 
 class IncomeManager {
     const int idLoggedUser;
     FileWithIncomes fileWithIncomes;
+    TimeManager timeManager;
     vector <Income> incomes;
-    //TimeManager timeManager;
 
-    void enterDataOfNewIncome();
+    Income enterDataOfNewIncome();
+    int enterDate();
+    double enterAmount();
+    double checkValueOfAmount(string amount);
 
 public:
     IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
-        //fileNameWithIncomes.loadIncomesFromFile(idLoggedUser, users);
+        fileWithIncomes.loadIncomesLoggedUserFromFile(incomes, idLoggedUser);
     };
     void addIncome();
-    void loadIncomesLoggedUserFromFile();
     double calculateSumOfIncomes();
     void showIncomesList();
     int getStartBorderPeriod();
