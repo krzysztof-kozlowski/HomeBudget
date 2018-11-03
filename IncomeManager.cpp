@@ -77,7 +77,8 @@ void IncomeManager::showIncomesSummary() {
     cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
     showIncomesList(startDate, endDate);
     cout << endl;
-    cout << "Suma przychodow wynosi: " << calculateSumOfIncomes(startDate, endDate) << endl;
+    sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
+    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
     cout << "---------------------------" << endl << endl;
 }
 
@@ -105,6 +106,10 @@ double IncomeManager::calculateSumOfIncomes(int startDate, int endDate) {
             sumOfIncomes += incomes[i].getAmount();
         }
     }
+    return sumOfIncomes;
+}
+
+double IncomeManager::getSumOfIncomes() {
     return sumOfIncomes;
 }
 

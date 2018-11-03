@@ -76,10 +76,9 @@ void ExpenseManager::showExpensesSummary() {
     cout << " >>> LISTA WYDATKOW <<<" << endl << endl;
     showExpensesList(startDate, endDate);
     cout << endl;
-    cout << "Suma wydatkow wynosi: " << calculateSumOfExpenses(startDate, endDate) << endl;
+    sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
+    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
     cout << "---------------------------" << endl << endl;
-
-    system("pause");
 }
 
 void ExpenseManager::showExpensesList(int startDate, int endDate) {
@@ -106,6 +105,10 @@ double ExpenseManager::calculateSumOfExpenses(int startDate, int endDate) {
             sumOfExpenses += expenses[i].getAmount();
         }
     }
+    return sumOfExpenses;
+}
+
+double ExpenseManager::getSumOfExpenses() {
     return sumOfExpenses;
 }
 

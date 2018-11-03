@@ -14,6 +14,7 @@
 
 class ExpenseManager {
     const int idLoggedUser;
+    double sumOfExpenses;
     FileWithExpenses fileWithExpenses;
     TimeManager timeManager;
     vector <Expense> expenses;
@@ -32,6 +33,7 @@ public:
     void showExpensesSummary();
     void showExpensesList(int startDate, int endDate);
     double calculateSumOfExpenses(int startDate, int endDate);
+    double getSumOfExpenses();
 };
 
 bool operator<(Expense &expense1, Expense &expense2);

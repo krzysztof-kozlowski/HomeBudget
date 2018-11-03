@@ -37,4 +37,7 @@ void HomeBudget::addExpense(){
 void HomeBudget::checkCurrentMonthBalance(){
     incomeManager->showIncomesSummary();
     expenseManager->showExpensesSummary();
+
+    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    system("pause");
 }
