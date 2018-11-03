@@ -38,7 +38,7 @@ int main() {
                     homeBudget.addIncome();
                     break;
                 case '2':
-                    ;
+                    homeBudget.addExpense();
                     break;
                 case '3':
                     ;

@@ -26,7 +26,7 @@ public:
     int userLogout();
 
     void addIncome();
-
+    void addExpense();
 };
 
 #endif // HOMEBUDGET_H
