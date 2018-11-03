@@ -30,7 +30,8 @@ public:
     };
     void addExpense();
 
-    void showExpensesSummary();
+    void showExpensesSummaryCurrentMonth();
+    void showExpensesSummaryPreviousMonth();
     void showExpensesList(int startDate, int endDate);
     double calculateSumOfExpenses(int startDate, int endDate);
     double getSumOfExpenses();

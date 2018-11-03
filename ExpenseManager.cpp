@@ -69,7 +69,7 @@ double ExpenseManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-void ExpenseManager::showExpensesSummary() {
+void ExpenseManager::showExpensesSummaryCurrentMonth() {
     int startDate = timeManager.calculateBeginOfCurrentMonth();
     int endDate = timeManager.getCurrentTime();
 
@@ -79,6 +79,10 @@ void ExpenseManager::showExpensesSummary() {
     sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
     cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
     cout << "---------------------------" << endl << endl;
+}
+
+void ExpenseManager::showExpensesSummaryPreviousMonth(){
+;
 }
 
 void ExpenseManager::showExpensesList(int startDate, int endDate) {

@@ -26,17 +26,25 @@ int HomeBudget::userLogout() {
     delete expenseManager;
 }
 
-void HomeBudget::addIncome(){
+void HomeBudget::addIncome() {
     incomeManager->addIncome();
 }
 
-void HomeBudget::addExpense(){
+void HomeBudget::addExpense() {
     expenseManager->addExpense();
 }
 
-void HomeBudget::checkCurrentMonthBalance(){
-    incomeManager->showIncomesSummary();
-    expenseManager->showExpensesSummary();
+void HomeBudget::checkCurrentMonthBalance() {
+    incomeManager->showIncomesSummaryCurrentMonth();
+    expenseManager->showExpensesSummaryCurrentMonth();
+
+    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    system("pause");
+}
+
+void HomeBudget::checkPreviousMonthBalance() {
+    incomeManager->showIncomesSummaryPreviousMonth();
+    expenseManager->showExpensesSummaryPreviousMonth();
 
     cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
     system("pause");

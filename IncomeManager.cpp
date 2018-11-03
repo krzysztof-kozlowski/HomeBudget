@@ -69,9 +69,22 @@ double IncomeManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-void IncomeManager::showIncomesSummary() {
+void IncomeManager::showIncomesSummaryCurrentMonth() {
     int startDate = timeManager.calculateBeginOfCurrentMonth();
     int endDate = timeManager.getCurrentTime();
+
+    system("cls");
+    cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
+    showIncomesList(startDate, endDate);
+    cout << endl;
+    sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
+    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
+    cout << "---------------------------" << endl << endl;
+}
+
+void IncomeManager::showIncomesSummaryPreviousMonth() {
+    int startDate = timeManager.calculateBeginOfPreviousMonth();
+    int endDate = timeManager.calculateEndOfPreviuosMonth();
 
     system("cls");
     cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;

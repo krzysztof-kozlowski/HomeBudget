@@ -182,5 +182,78 @@ string TimeManager::setBeginCurrentMonth(int seconds) {
     return date;
 }
 
+int TimeManager::calculateBeginOfPreviousMonth() {
+    int currentTime = getCurrentTime();
+    string date = setBeginPreviousMonth(currentTime);
+
+    return calculateManualDateToSeconds(date);
+}
+
+string TimeManager::setBeginPreviousMonth(int seconds) {
+    string strYear = "";
+    string strMonth = "";
+
+    time_t rawtime = seconds;
+    struct tm * timeinfo;
+
+    timeinfo = localtime ( &rawtime );
+
+    int year = timeinfo->tm_year + 1900;
+    int month = timeinfo->tm_mon;
+
+    strYear = to_string(year);
+    if (month < 10)
+        strMonth = "0" + to_string(month);
+    else
+        strMonth = to_string(month);
+
+    string date = strYear + "-" + strMonth + "-01";
+    return date;
+}
+
+int TimeManager::calculateEndOfPreviuosMonth() {
+    int currentTime = getCurrentTime();
+    string date = setEndPreviousMonth(currentTime);
+
+    return calculateManualDateToSeconds(date);
+}
+
+string TimeManager::setEndPreviousMonth(int seconds) {
+    string strYear = "";
+    string strMonth = "";
+    string strDay = "";
+
+    time_t rawtime = seconds;
+    struct tm * timeinfo;
+
+    timeinfo = localtime ( &rawtime );
+
+    int year = timeinfo->tm_year + 1900;
+    int month = timeinfo->tm_mon;
+    int day = 0;
+
+    strYear = to_string(year);
+    if (month < 10)
+        strMonth = "0" + to_string(month);
+    else
+        strMonth = to_string(month);
+
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+        day = 31;
+    else if (month == 4 || month == 6 || month == 9 || month == 11)
+        day = 30;
+    else if (month == 2) {
+        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+            day = 29;
+        else
+            day = 28;
+    }
+
+    strDay = to_string(day);
+
+    string date = strYear + "-" + strMonth + "-" + strDay;
+    return date;
+}
+
 
 

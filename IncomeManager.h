@@ -31,7 +31,8 @@ public:
     };
     void addIncome();
 
-    void showIncomesSummary();
+    void showIncomesSummaryCurrentMonth();
+    void showIncomesSummaryPreviousMonth();
     void showIncomesList(int startDate, int endDate);
     double calculateSumOfIncomes(int startDate, int endDate);
     double getSumOfIncomes();

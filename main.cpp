@@ -44,7 +44,7 @@ int main() {
                     homeBudget.checkCurrentMonthBalance();
                     break;
                 case '4':
-                    ;
+                    homeBudget.checkPreviousMonthBalance();
                     break;
                 case '5':
                     ;
