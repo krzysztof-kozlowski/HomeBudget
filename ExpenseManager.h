@@ -24,7 +24,7 @@ class ExpenseManager {
     double checkValueOfAmount(string amount);
 
 public:
-    ExpenseManager(string fileNameWithExpenses, int IDLOGGEDUSER) : fileWithExpenses(fileNameWithExpenses), idLoggedUser(IDLOGGEDUSER); {
+    ExpenseManager(string fileNameWithExpenses, int IDLOGGEDUSER) : fileWithExpenses(fileNameWithExpenses), idLoggedUser(IDLOGGEDUSER) {
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
     };
     void addExpense();
