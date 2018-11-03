@@ -199,7 +199,13 @@ string TimeManager::setBeginPreviousMonth(int seconds) {
     timeinfo = localtime ( &rawtime );
 
     int year = timeinfo->tm_year + 1900;
-    int month = timeinfo->tm_mon;
+    int month = timeinfo->tm_mon + 1;
+
+    if (month == 1) {
+        month = 12;
+        year--;
+    } else
+        month -= 1;
 
     strYear = to_string(year);
     if (month < 10)
@@ -229,8 +235,14 @@ string TimeManager::setEndPreviousMonth(int seconds) {
     timeinfo = localtime ( &rawtime );
 
     int year = timeinfo->tm_year + 1900;
-    int month = timeinfo->tm_mon;
+    int month = timeinfo->tm_mon + 1;
     int day = 0;
+
+    if (month == 1) {
+        month = 12;
+        year--;
+    } else
+        month -= 1;
 
     strYear = to_string(year);
     if (month < 10)
