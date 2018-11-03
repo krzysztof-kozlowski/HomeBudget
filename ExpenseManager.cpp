@@ -1,16 +1,16 @@
-#include "IncomeManager.h"
+#include "ExpenseManager.h"
 
-void IncomeManager::addIncome() {
+void ExpenseManager::addExpense() {
     system("cls");
-    cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
-    Income income = enterDataOfNewIncome();
+    cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
+    Expense expense = enterDataOfNewExpense();
 
-    incomes.push_back(income);
-    fileWithIncomes.addIncomeToFile(income);
+    expenses.push_back(expense);
+    fileWithExpenses.addExpenseToFile(expense);
 }
 
-Income IncomeManager::enterDataOfNewIncome() {
-    int incomeId = fileWithIncomes.checkIdOfLastIncome() + 1;
+Expense ExpenseManager::enterDataOfNewExpense() {
+    int expenseId = fileWithExpenses.checkIdOfLastExpense() + 1;
     int userId = idLoggedUser;
 
     int date;
@@ -18,24 +18,24 @@ Income IncomeManager::enterDataOfNewIncome() {
     double amount;
     char dateDecision;
 
-    cout << "Czy przychod dotyczy dzisiejszej daty <t/n>: ";
+    cout << "Czy wydatek dotyczy dzisiejszej daty <t/n>: ";
     cin >> dateDecision;
     if (dateDecision == 't')
         date = timeManager.getCurrentTime();
     else if (dateDecision == 'n')
         date = enterDate();
 
-    cout << "Wpisz czego dotyczy ten przychod: ";
+    cout << "Wpisz czego dotyczy ten wydatek: ";
     cin.sync();
     getline(cin, item);
     amount = enterAmount();
 
-    Income income(incomeId, userId, date, AuxMethods::changeFirstLetterOnUpperRestOnLower(item), amount);
+    Expense expense(expenseId, userId, date, AuxMethods::changeFirstLetterOnUpperRestOnLower(item), amount);
 
-    return income;
+    return expense;
 }
 
-int IncomeManager::enterDate() {
+int ExpenseManager::enterDate() {
     string date;
 
     do {
@@ -47,17 +47,17 @@ int IncomeManager::enterDate() {
     return timeManager.calculateManualDateToSeconds(date);
 }
 
-double IncomeManager::enterAmount() {
+double ExpenseManager::enterAmount() {
     string strAmount;
 
-    cout << "Wpisz kwote przychodu: ";
+    cout << "Wpisz kwote wydatku: ";
     cin.sync();
     getline(cin, strAmount);
 
     return checkValueOfAmount(strAmount);
 }
 
-double IncomeManager::checkValueOfAmount(string strAmount) {
+double ExpenseManager::checkValueOfAmount(string strAmount) {
     for(int i = 0; i < strAmount.length(); i++) {
         if (strAmount[i] == ',')
             strAmount[i] = '.';
@@ -69,19 +69,19 @@ double IncomeManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-double IncomeManager::calculateSumOfIncomes() {
+double ExpenseManager::calculateSumOfExpenses() {
     ;
 }
 
-void IncomeManager::showIncomesList() {
+void ExpenseManager::showExpensesList() {
     ;
 }
 
-int IncomeManager::getStartBorderPeriod() {
+int ExpenseManager::getStartBorderPeriod() {
     ;
 }
 
-int IncomeManager::getEndBorderPeriod() {
+int ExpenseManager::getEndBorderPeriod() {
     ;
 }
 

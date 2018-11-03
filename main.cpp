@@ -7,7 +7,7 @@ char selectOptionFromMainMenu();
 char selectOptionFromUserMenu();
 
 int main() {
-    HomeBudget homeBudget("users.xml", "incomes.xml");
+    HomeBudget homeBudget("users.xml", "incomes.xml", "expenses.xml");
     char choice;
 
     while (true) {
@@ -38,7 +38,7 @@ int main() {
                     homeBudget.addIncome();
                     break;
                 case '2':
-                    ;
+                    homeBudget.addExpense();
                     break;
                 case '3':
                     ;
