@@ -15,7 +15,6 @@
 
 class IncomeManager {
     const int idLoggedUser;
-    double sumOfIncomes;
     FileWithIncomes fileWithIncomes;
     TimeManager timeManager;
     vector <Income> incomes;
@@ -32,10 +31,8 @@ public:
     void addIncome();
 
     void showIncomesSummary();
-    void showIncomesList();
-    double calculateSumOfIncomes();
-
-    double getSumOfIncomes();
+    void showIncomesList(int startDate, int endDate);
+    double calculateSumOfIncomes(int startDate, int endDate);
 };
 
 bool operator<(Income &income1, Income &income2);

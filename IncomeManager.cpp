@@ -70,38 +70,46 @@ double IncomeManager::checkValueOfAmount(string strAmount) {
 }
 
 void IncomeManager::showIncomesSummary() {
-    system("cls");
-    cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
-    showIncomesList();
-
-}
-
-void IncomeManager::showIncomesList() {
     int startDate = timeManager.calculateBeginOfCurrentMonth();
     int endDate = timeManager.getCurrentTime();
 
-    sort(incomes.begin(),incomes.end());
-
-    for(int i = 0; i < incomes.size(); i++){
-        cout << incomes[i].getItem() << endl;
-        cout << timeManager.calculateSecondsToManualDate(incomes[i].getDate()) << endl;
-    }
+    system("cls");
+    cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
+    showIncomesList(startDate, endDate);
+    cout << endl;
+    cout << "Suma przychodow wynosi: " << calculateSumOfIncomes(startDate, endDate) << endl;
+    cout << "---------------------------" << endl << endl;
 
     system("pause");
+}
 
+void IncomeManager::showIncomesList(int startDate, int endDate) {
+    sort(incomes.begin(),incomes.end());
+
+    for(int i = 0; i < incomes.size(); i++) {
+        if ((incomes[i].getDate() >= startDate) && (incomes[i].getDate() <= endDate)) {
+            cout << timeManager.calculateSecondsToManualDate(incomes[i].getDate()) << "  /  ";
+            cout << incomes[i].getItem() << "  /  ";
+            cout << incomes[i].getAmount() << endl;
+        }
+    }
 }
 
 bool operator<(Income &income1, Income &income2) {
     return income1.getDate() < income2.getDate();
 }
 
-double IncomeManager::calculateSumOfIncomes() {
-    ;
-}
+double IncomeManager::calculateSumOfIncomes(int startDate, int endDate) {
+    double sumOfIncomes = 0;
 
-double IncomeManager::getSumOfIncomes() {
+    for(int i = 0; i < incomes.size(); i++) {
+        if ((incomes[i].getDate() >= startDate) && (incomes[i].getDate() <= endDate)) {
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
     return sumOfIncomes;
 }
+
 
 
 
