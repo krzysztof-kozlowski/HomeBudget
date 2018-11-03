@@ -69,20 +69,46 @@ double ExpenseManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-double ExpenseManager::calculateSumOfExpenses() {
-    ;
+void ExpenseManager::showExpensesSummary() {
+    int startDate = timeManager.calculateBeginOfCurrentMonth();
+    int endDate = timeManager.getCurrentTime();
+
+    cout << " >>> LISTA WYDATKOW <<<" << endl << endl;
+    showExpensesList(startDate, endDate);
+    cout << endl;
+    sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
+    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "---------------------------" << endl << endl;
 }
 
-void ExpenseManager::showExpensesList() {
-    ;
+void ExpenseManager::showExpensesList(int startDate, int endDate) {
+    sort(expenses.begin(),expenses.end());
+
+    for(int i = 0; i < expenses.size(); i++) {
+        if ((expenses[i].getDate() >= startDate) && (expenses[i].getDate() <= endDate)) {
+            cout << timeManager.calculateSecondsToManualDate(expenses[i].getDate()) << "  /  ";
+            cout << expenses[i].getItem() << "  /  ";
+            cout << expenses[i].getAmount() << endl;
+        }
+    }
 }
 
-int ExpenseManager::getStartBorderPeriod() {
-    ;
+bool operator<(Expense &expense1, Expense &expense2) {
+    return expense1.getDate() < expense2.getDate();
 }
 
-int ExpenseManager::getEndBorderPeriod() {
-    ;
+double ExpenseManager::calculateSumOfExpenses(int startDate, int endDate) {
+    double sumOfExpenses = 0;
+
+    for(int i = 0; i < expenses.size(); i++) {
+        if ((expenses[i].getDate() >= startDate) && (expenses[i].getDate() <= endDate)) {
+            sumOfExpenses += expenses[i].getAmount();
+        }
+    }
+    return sumOfExpenses;
 }
 
+double ExpenseManager::getSumOfExpenses() {
+    return sumOfExpenses;
+}
 

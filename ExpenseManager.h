@@ -14,6 +14,7 @@
 
 class ExpenseManager {
     const int idLoggedUser;
+    double sumOfExpenses;
     FileWithExpenses fileWithExpenses;
     TimeManager timeManager;
     vector <Expense> expenses;
@@ -28,9 +29,13 @@ public:
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
     };
     void addExpense();
-    double calculateSumOfExpenses();
-    void showExpensesList();
-    int getStartBorderPeriod();
-    int getEndBorderPeriod();
+
+    void showExpensesSummary();
+    void showExpensesList(int startDate, int endDate);
+    double calculateSumOfExpenses(int startDate, int endDate);
+    double getSumOfExpenses();
 };
+
+bool operator<(Expense &expense1, Expense &expense2);
+
 #endif // EXPENSEMANAGER_H
