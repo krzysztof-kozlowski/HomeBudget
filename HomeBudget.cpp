@@ -36,4 +36,5 @@ void HomeBudget::addExpense(){
 
 void HomeBudget::checkCurrentMonthBalance(){
     incomeManager->showIncomesSummary();
+    expenseManager->showExpensesSummary();
 }

@@ -28,9 +28,12 @@ public:
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
     };
     void addExpense();
-    double calculateSumOfExpenses();
-    void showExpensesList();
-    int getStartBorderPeriod();
-    int getEndBorderPeriod();
+
+    void showExpensesSummary();
+    void showExpensesList(int startDate, int endDate);
+    double calculateSumOfExpenses(int startDate, int endDate);
 };
+
+bool operator<(Expense &expense1, Expense &expense2);
+
 #endif // EXPENSEMANAGER_H
