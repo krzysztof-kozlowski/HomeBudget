@@ -5,6 +5,7 @@
 #include <vector>
 #include <windows.h>
 #include <sstream>
+#include <stdexcept>
 
 #include "FileWithIncomes.h"
 #include "Income.h"
@@ -14,6 +15,7 @@
 
 class IncomeManager {
     const int idLoggedUser;
+    double sumOfIncomes;
     FileWithIncomes fileWithIncomes;
     TimeManager timeManager;
     vector <Income> incomes;
@@ -28,9 +30,14 @@ public:
         fileWithIncomes.loadIncomesLoggedUserFromFile(incomes, idLoggedUser);
     };
     void addIncome();
-    double calculateSumOfIncomes();
+
+    void showIncomesSummary();
     void showIncomesList();
-    int getStartBorderPeriod();
-    int getEndBorderPeriod();
+    double calculateSumOfIncomes();
+
+    double getSumOfIncomes();
 };
+
+bool operator<(Income &income1, Income &income2);
+
 #endif // INCOMEMANAGER_H

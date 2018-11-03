@@ -50,8 +50,8 @@ bool TimeManager::isCorrectDateValues(string date) {
 }
 
 bool TimeManager::isCorrectPeriod(string date) {
-    startBorderPeriod = calculateManualDateToSeconds("2000-01-01");
-    endBorderPeriod = getCurrentTime();
+    int startBorderPeriod = calculateManualDateToSeconds("2000-01-01");
+    int endBorderPeriod = getCurrentTime();
 
     int selectedDate = calculateManualDateToSeconds(date);
 
@@ -120,6 +120,66 @@ int TimeManager::calculateManualDateToSeconds(string date) {
         seconds += 60 * 60 * 24;
     }
     return seconds;
+}
+
+string TimeManager::calculateSecondsToManualDate(int seconds) {
+    string strYear = "";
+    string strMonth = "";
+    string strDay = "";
+
+    time_t rawtime = seconds;
+    struct tm * timeinfo;
+
+    timeinfo = localtime ( &rawtime );
+
+    int year = timeinfo->tm_year + 1900;
+    int month = timeinfo->tm_mon + 1;
+    int day = timeinfo->tm_mday;
+
+    strYear = to_string(year);
+
+    if (month < 10)
+        strMonth = "0" + to_string(month);
+    else
+        strMonth = to_string(month);
+
+    if (day < 10)
+        strDay = "0" + to_string(day);
+    else
+        strDay = to_string(day);
+
+    string date = strYear + "-" + strMonth + "-" + strDay;
+
+    return date;
+}
+
+int TimeManager::calculateBeginOfCurrentMonth() {
+    int currentTime = getCurrentTime();
+    string date = setBeginCurrentMonth(currentTime);
+
+    return calculateManualDateToSeconds(date);
+}
+
+string TimeManager::setBeginCurrentMonth(int seconds) {
+    string strYear = "";
+    string strMonth = "";
+
+    time_t rawtime = seconds;
+    struct tm * timeinfo;
+
+    timeinfo = localtime ( &rawtime );
+
+    int year = timeinfo->tm_year + 1900;
+    int month = timeinfo->tm_mon + 1;
+
+    strYear = to_string(year);
+    if (month < 10)
+        strMonth = "0" + to_string(month);
+    else
+        strMonth = to_string(month);
+
+    string date = strYear + "-" + strMonth + "-01";
+    return date;
 }
 
 

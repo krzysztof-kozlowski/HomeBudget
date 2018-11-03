@@ -27,6 +27,7 @@ public:
 
     void addIncome();
     void addExpense();
+    void checkCurrentMonthBalance();
 };
 
 #endif // HOMEBUDGET_H

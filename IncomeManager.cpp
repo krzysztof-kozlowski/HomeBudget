@@ -69,20 +69,39 @@ double IncomeManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
+void IncomeManager::showIncomesSummary() {
+    system("cls");
+    cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
+    showIncomesList();
+
+}
+
+void IncomeManager::showIncomesList() {
+    int startDate = timeManager.calculateBeginOfCurrentMonth();
+    int endDate = timeManager.getCurrentTime();
+
+    sort(incomes.begin(),incomes.end());
+
+    for(int i = 0; i < incomes.size(); i++){
+        cout << incomes[i].getItem() << endl;
+        cout << timeManager.calculateSecondsToManualDate(incomes[i].getDate()) << endl;
+    }
+
+    system("pause");
+
+}
+
+bool operator<(Income &income1, Income &income2) {
+    return income1.getDate() < income2.getDate();
+}
+
 double IncomeManager::calculateSumOfIncomes() {
     ;
 }
 
-void IncomeManager::showIncomesList() {
-    ;
+double IncomeManager::getSumOfIncomes() {
+    return sumOfIncomes;
 }
 
-int IncomeManager::getStartBorderPeriod() {
-    ;
-}
-
-int IncomeManager::getEndBorderPeriod() {
-    ;
-}
 
 
