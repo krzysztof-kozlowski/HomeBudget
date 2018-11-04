@@ -93,6 +93,10 @@ void ExpenseManager::showExpensesSummaryPreviousMonth() {
     cout << "---------------------------" << endl << endl;;
 }
 
+void ExpenseManager::showExpensesSummarySelectedPeriod(){
+;
+}
+
 void ExpenseManager::showExpensesList(int startDate, int endDate) {
     sort(expenses.begin(),expenses.end());
 

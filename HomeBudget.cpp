@@ -52,4 +52,5 @@ void HomeBudget::checkPreviousMonthBalance() {
 
 void HomeBudget::checkSelectedPeriodBalance(){
     incomeManager->showIncomesSummarySelectedPeriod();
+    expenseManager->showExpensesSummarySelectedPeriod();
 }

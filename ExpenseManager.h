@@ -35,6 +35,7 @@ public:
 
     void showExpensesSummaryCurrentMonth();
     void showExpensesSummaryPreviousMonth();
+    void showExpensesSummarySelectedPeriod();
 
     double getSumOfExpenses();
 };
