@@ -24,7 +24,7 @@ It uses support for XML files (saving and reading information about users and th
 
 ## Setup
 Firstly, it is neccesary to create new user by registration.  
-Secondly, after login you can access to user menu when you can add incomes and expenses.  
+Secondly, after login you have access to user menu where you can add incomes and expenses.  
 Also you can check the money balance from period which you want.
 
 ## Features
