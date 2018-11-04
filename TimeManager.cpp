@@ -267,5 +267,35 @@ string TimeManager::setEndPreviousMonth(int seconds) {
     return date;
 }
 
+int TimeManager::setStartDate() {
+    system("cls");
+    cout << "START OKRESU // ";
+
+    return enterDate();
+}
+
+int TimeManager::setEndDate() {
+    char dateDecision;
+
+    cout << "KONIEC OKRESU // " << endl;
+    cout << "Czy ustawic date dzisiejsza? <t/n>: ";
+    cin >> dateDecision;
+    if (dateDecision == 't')
+        return getCurrentTime();
+    else if (dateDecision == 'n')
+        return enterDate();
+}
+
+int TimeManager::enterDate() {
+    string date;
+
+    do {
+        cout << "Wpisz date <rrrr-mm-dd>: ";
+        cin.sync();
+        getline(cin, date);
+    } while(!isCorrectDate(date));
+
+    return calculateManualDateToSeconds(date);
+}
 
 

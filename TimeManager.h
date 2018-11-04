@@ -9,6 +9,7 @@
 using namespace std;
 
 class TimeManager {
+
     bool isWellFormatted(string date);
     bool isCorrectDateValues(string date);
     bool isCorrectPeriod(string date);
@@ -30,6 +31,10 @@ public:
 
     int calculateBeginOfPreviousMonth();
     int calculateEndOfPreviuosMonth();
+
+    int setStartDate();
+    int setEndDate();
+    int enterDate();
 };
 
 #endif // TIMEMANAGER_H

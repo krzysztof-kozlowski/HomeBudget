@@ -20,7 +20,6 @@ class ExpenseManager {
     vector <Expense> expenses;
 
     Expense enterDataOfNewExpense();
-    int enterDate();
     double enterAmount();
     double checkValueOfAmount(string amount);
 
@@ -35,6 +34,7 @@ public:
 
     void showExpensesSummaryCurrentMonth();
     void showExpensesSummaryPreviousMonth();
+    void showExpensesSummarySelectedPeriod(int startDate, int endDate);
 
     double getSumOfExpenses();
 };

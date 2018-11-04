@@ -6,6 +6,7 @@
 #include "UserManager.h"
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
+#include "TimeManager.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ class HomeBudget {
     UserManager userManager;
     IncomeManager *incomeManager;
     ExpenseManager *expenseManager;
+    TimeManager *timeManager;
     const string fileNameWithIncomes;
     const string fileNameWithExpenses;
 
