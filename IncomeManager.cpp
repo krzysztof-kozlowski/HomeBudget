@@ -3,6 +3,7 @@
 void IncomeManager::addIncome() {
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
+
     Income income = enterDataOfNewIncome();
 
     incomes.push_back(income);

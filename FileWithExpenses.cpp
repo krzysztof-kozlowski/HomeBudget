@@ -69,7 +69,8 @@ void FileWithExpenses::loadExpensesLoggedUserFromFile(vector <Expense> &expenses
             if (AuxMethods::conversionStringToInt(userId) == idLoggedUser) {
                 Expense expense = getExpenseInfoFromFile(xml);
                 expenses.push_back(expense);
-            }
+            } else
+            xml.OutOfElem();
         }
     }
 }
