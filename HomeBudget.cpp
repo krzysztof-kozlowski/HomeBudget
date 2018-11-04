@@ -38,7 +38,7 @@ void HomeBudget::checkCurrentMonthBalance() {
     incomeManager->showIncomesSummaryCurrentMonth();
     expenseManager->showExpensesSummaryCurrentMonth();
 
-    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    cout << "SALDO wynosi: " << fixed << setprecision(2) << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
     system("pause");
 }
 
@@ -46,7 +46,7 @@ void HomeBudget::checkPreviousMonthBalance() {
     incomeManager->showIncomesSummaryPreviousMonth();
     expenseManager->showExpensesSummaryPreviousMonth();
 
-    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    cout << "SALDO wynosi: " << fixed << setprecision(2) << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
     system("pause");
 }
 
@@ -58,6 +58,6 @@ void HomeBudget::checkSelectedPeriodBalance() {
     incomeManager->showIncomesSummarySelectedPeriod(startDate, endDate);
     expenseManager->showExpensesSummarySelectedPeriod(startDate, endDate);
 
-    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    cout << "SALDO wynosi: " << fixed << setprecision(2) << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
     system("pause");
 }
