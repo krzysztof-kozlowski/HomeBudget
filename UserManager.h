@@ -30,8 +30,6 @@ public:
     void passwordChangeLoggedUser();
     int getIdLoggedUser();
     int userLogout();
-
-    void wyswietl();
 };
 
 #endif // USERMANAGER_H

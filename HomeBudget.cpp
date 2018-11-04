@@ -24,6 +24,7 @@ int HomeBudget::userLogout() {
     userManager.userLogout();
     delete incomeManager;
     delete expenseManager;
+    delete timeManager;
 }
 
 void HomeBudget::addIncome() {

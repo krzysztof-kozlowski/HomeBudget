@@ -67,7 +67,7 @@ void IncomeManager::showIncomesSummaryCurrentMonth() {
     showIncomesList(startDate, endDate);
     cout << endl;
     sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
-    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
+    cout << "Suma przychodow wynosi: " << fixed << setprecision(2) << sumOfIncomes << endl;
     cout << "---------------------------" << endl << endl;
 }
 
@@ -80,7 +80,7 @@ void IncomeManager::showIncomesSummaryPreviousMonth() {
     showIncomesList(startDate, endDate);
     cout << endl;
     sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
-    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
+    cout << "Suma przychodow wynosi: " << fixed << setprecision(2) << sumOfIncomes << endl;
     cout << "---------------------------" << endl << endl;
 }
 
@@ -90,7 +90,7 @@ void IncomeManager::showIncomesSummarySelectedPeriod(int startDate, int endDate)
     showIncomesList(startDate, endDate);
     cout << endl;
     sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
-    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
+    cout << "Suma przychodow wynosi: " << fixed << setprecision(2) << sumOfIncomes << endl;
     cout << "---------------------------" << endl << endl;
 }
 
@@ -99,10 +99,9 @@ void IncomeManager::showIncomesList(int startDate, int endDate) {
 
     for(int i = 0; i < incomes.size(); i++) {
         if ((incomes[i].getDate() >= startDate) && (incomes[i].getDate() <= endDate)) {
-            cout << incomes[i].getUserId() << "  /  ";
             cout << timeManager.calculateSecondsToManualDate(incomes[i].getDate()) << "  /  ";
             cout << incomes[i].getItem() << "  /  ";
-            cout << incomes[i].getAmount() << endl;
+            cout << fixed << setprecision(2) << incomes[i].getAmount() << endl;
         }
     }
 }

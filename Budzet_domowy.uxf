@@ -5,7 +5,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>16</x>
+      <x>0</x>
       <y>200</y>
       <w>232</w>
       <h>272</h>
@@ -15,6 +15,7 @@
 - userManager: UserManager
 - incomeManager *: IncomeManager
 - expenseManager *: ExpenseManager
+- timeManager *: TimeManager
 - fileNameWithIncomes: const string
 - fileNameWithExpenses: const string
 -
@@ -37,10 +38,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
+      <x>384</x>
       <y>0</y>
-      <w>200</w>
-      <h>208</h>
+      <w>208</w>
+      <h>224</h>
     </coordinates>
     <panel_attributes>UserManager
 -
@@ -57,6 +58,7 @@
 + userLogout(): integer
 
 - enterDataOfNewUser(): User
+- getIdOfNewUser(): integer
 - isExistLogin(): bool
 </panel_attributes>
     <additional_attributes/>
@@ -64,7 +66,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
+      <x>248</x>
       <y>0</y>
       <w>128</w>
       <h>144</h>
@@ -84,8 +86,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>216</y>
+      <x>248</x>
+      <y>240</y>
       <w>128</w>
       <h>120</h>
     </coordinates>
@@ -103,8 +105,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>424</y>
+      <x>240</x>
+      <y>552</y>
       <w>128</w>
       <h>128</h>
     </coordinates>
@@ -122,27 +124,34 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>216</y>
-      <w>240</w>
-      <h>200</h>
+      <x>384</x>
+      <y>240</y>
+      <w>264</w>
+      <h>296</h>
     </coordinates>
     <panel_attributes>IncomeManager
 -
 - idLoggedUser: const integer
+- sumOfIncomes: double
 - fileWithIncomes: FileWithIncomes
-- incomes: vector &lt;Income&gt;
 - timeManager: TimeManager
+- incomes: vector &lt;Income&gt;
 -
 + IncomeManager()
 + addIncome(): void
-+ loadIncomesLoggedUserFromFile(): void
-+ calculateSumOfIncomes(): double
-+ showIncomesList(): void
-+ getStartBorderPeriod(): integer
-+ getEndBorderPeriod(): integer
++ showIncomesSummaryCurrentMonth(): void
++ showIncomesSummaryPreviousMonth(): void
++ showIncomesSummarySelectedPeriod(): void
++ getSumOfIncomes(): double
 
 - enterDataOfNewIncome(): void
+- enterAmount(): double
+- checkValueOfAmount(): double
+- showIncomesList(): void
+- calculateSumOfIncomes(): double
+
+-
+operator&lt;(): bool
 
 
 </panel_attributes>
@@ -152,8 +161,8 @@
     <id>UMLClass</id>
     <coordinates>
       <x>656</x>
-      <y>216</y>
-      <w>256</w>
+      <y>240</y>
+      <w>264</w>
       <h>168</h>
     </coordinates>
     <panel_attributes>FileWithIncomes
@@ -165,42 +174,43 @@
 + checkIdOfLastIncome(): integer
 + loadIncomesLoggedUserFromFile(): void
 
-- getIdOfLastIncome(): integer</panel_attributes>
+- getIdOfLastIncome(): integer
+- putDataIncomeIntoFile(): void
+- getIncomeInfoFromFile: Income</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>728</x>
-      <y>640</y>
-      <w>152</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>File
--
-
--
-- isFileEmpty(): bool</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>264</x>
-      <y>640</y>
-      <w>208</w>
-      <h>136</h>
+      <x>216</x>
+      <y>864</y>
+      <w>248</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>TimeManager
 -
-- currentTime: integer
-- startBorderPeriod: integer
-- endBorderPeriod: integer
+
 -
-+ TimeManager()
 + getCurrentTime(): integer
-+ calculateStartBorderPeriod(): integer
-+ calculateEndBorderPeriod(): integer
++ isCorrectDate(): bool
++ calculateManualDateToSeconds(): integer
++ calculateSecondsToManualDate(): string
++ calculateBeginOfCurrentMonth(): integer
++ calculateBeginOfPreviousMonth(): integer
++ calculateEndOfPreviousMonth(): integer
++ setStartDate(): integer
++ setEndDate(): integer
++ enterDate(): integer
+
+- isWellFormatted(): bool
+- isCorrectDateValues(): bool
+- is CorrectPeriod(): bool
+- getYearFromManualDate(): integer
+- getMonthFromManualDate(): integer
+- getDayFromManualDate(): integer
+- setBeginCurrentMonth(): string
+- setBeginPreviousMonth(): string
+- setEndPreviousMonth(): string
 
 </panel_attributes>
     <additional_attributes/>
@@ -208,51 +218,58 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>424</y>
-      <w>240</w>
-      <h>208</h>
+      <x>384</x>
+      <y>552</y>
+      <w>264</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>ExpenseManager
 -
 - idLoggedUser: const integer
+- sumOfExpenses: double
 - fileWithExpenses: FileWithExpenses
+- timeManager: TimeManager
 - expenses: vector &lt;Expense&gt;
-timeManager: TimeManager
 -
 + ExpenseManager()
 + addExpense(): void
-+ checkIdOfLastExpense(): integer
-+ loadExpensesLoggedUserFromFile(): void
-+ calculateSumOfExpenses(): double
-+ showExpensesList(): void
-+ getStartBorderPeriod(): integer
-+ getEndBorderPeriod(): integer
++ showExpensesSummaryCurrentMonth(): void
++ showExpensesSummaryPreviousMonth(): void
++ showExpensesSummarySelectedPeriod(): void
++ getSumOfExpenses(): double
 
-- enterDataOfNewExpense(): void</panel_attributes>
+- enterDataOfNewExpense(): void
+- enterAmount(): double
+- checkValueOfAmount(): double
+- showExpensesList() void
+- calculateSumOfExpenses(): double
+
+-
+operator&lt;(): bool
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>488</x>
-      <y>640</y>
-      <w>224</w>
-      <h>112</h>
+      <x>472</x>
+      <y>864</y>
+      <w>344</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>AuxiliaryMethods
 -
 
 -
-+ sortRecordesListByDate(): void
-+ conversionIntToString(): string
-+ conversionStringToInt(): integer</panel_attributes>
++ conversionStringToInt(): static integer
++ changeFirstLetterOnUpperRestOnLower(): static string
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
+      <x>600</x>
       <y>0</y>
       <w>328</w>
       <h>176</h>
@@ -266,19 +283,16 @@ timeManager: TimeManager
 + loadUsersFromFile: vector &lt;User&gt;
 + saveAllUsersToFile(): void
 
-- getUserData(): User
-- deleteReadingFile(): void
-- changeNameOfTemporaryFileForNameOfReadingFile(): void
-- getIdOfLastUser(): integer</panel_attributes>
+- putDataUserIntoFile(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>656</x>
-      <y>424</y>
-      <w>256</w>
-      <h>168</h>
+      <y>552</y>
+      <w>264</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>FileWithExpenses
 -
@@ -289,7 +303,9 @@ timeManager: TimeManager
 + checkIdOfLastExpense(): integer
 + loadExpensesLoggedUserFromFile(): void
 
-- getIdOfLastExpense(): integer</panel_attributes>
+- getIdOfLastExpense(): integer
+- putDataExpensesIntoFile(): void
+- getExpenseInfoFromFile(): Expense</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
