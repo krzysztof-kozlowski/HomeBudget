@@ -95,11 +95,29 @@ void IncomeManager::showIncomesSummaryPreviousMonth() {
     cout << "---------------------------" << endl << endl;
 }
 
+void IncomeManager::showIncomesSummarySelectedPeriod() {
+    system("cls");
+    cout << "START OKRESU // ";
+    int startDate = enterDate();
+
+    cout << "KONIEC OKRESU // ";
+    int endDate = enterDate();
+
+    cout << endl;
+    cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
+    showIncomesList(startDate, endDate);
+    cout << endl;
+    sumOfIncomes = calculateSumOfIncomes(startDate, endDate);
+    cout << "Suma przychodow wynosi: " << sumOfIncomes << endl;
+    cout << "---------------------------" << endl << endl;
+}
+
 void IncomeManager::showIncomesList(int startDate, int endDate) {
     sort(incomes.begin(),incomes.end());
 
     for(int i = 0; i < incomes.size(); i++) {
         if ((incomes[i].getDate() >= startDate) && (incomes[i].getDate() <= endDate)) {
+            cout << incomes[i].getUserId() << "  /  ";
             cout << timeManager.calculateSecondsToManualDate(incomes[i].getDate()) << "  /  ";
             cout << incomes[i].getItem() << "  /  ";
             cout << incomes[i].getAmount() << endl;

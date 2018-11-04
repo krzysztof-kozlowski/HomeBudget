@@ -49,3 +49,7 @@ void HomeBudget::checkPreviousMonthBalance() {
     cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
     system("pause");
 }
+
+void HomeBudget::checkSelectedPeriodBalance(){
+    incomeManager->showIncomesSummarySelectedPeriod();
+}

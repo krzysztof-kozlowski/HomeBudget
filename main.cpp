@@ -47,7 +47,7 @@ int main() {
                     homeBudget.checkPreviousMonthBalance();
                     break;
                 case '5':
-                    ;
+                    homeBudget.checkSelectedPeriodBalance();
                     break;
                 case '6':
                     homeBudget.passwordChangeLoggedUser();
