@@ -69,7 +69,7 @@ double ExpenseManager::checkValueOfAmount(string strAmount) {
     return doubleAmount;
 }
 
-void ExpenseManager::showExpensesSummary() {
+void ExpenseManager::showExpensesSummaryCurrentMonth() {
     int startDate = timeManager.calculateBeginOfCurrentMonth();
     int endDate = timeManager.getCurrentTime();
 
@@ -81,11 +81,24 @@ void ExpenseManager::showExpensesSummary() {
     cout << "---------------------------" << endl << endl;
 }
 
+void ExpenseManager::showExpensesSummaryPreviousMonth() {
+    int startDate = timeManager.calculateBeginOfPreviousMonth();
+    int endDate = timeManager.calculateEndOfPreviuosMonth();
+
+    cout << " >>> LISTA WYDATKOW <<<" << endl << endl;
+    showExpensesList(startDate, endDate);
+    cout << endl;
+    sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
+    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "---------------------------" << endl << endl;;
+}
+
 void ExpenseManager::showExpensesList(int startDate, int endDate) {
     sort(expenses.begin(),expenses.end());
 
     for(int i = 0; i < expenses.size(); i++) {
         if ((expenses[i].getDate() >= startDate) && (expenses[i].getDate() <= endDate)) {
+            cout << expenses[i].getUserId() << "  /  ";
             cout << timeManager.calculateSecondsToManualDate(expenses[i].getDate()) << "  /  ";
             cout << expenses[i].getItem() << "  /  ";
             cout << expenses[i].getAmount() << endl;

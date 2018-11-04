@@ -17,13 +17,19 @@ class TimeManager {
     int getMonthFromManualDate(string date);
     int getDayFromManualDate(string date);
 
+    string setBeginCurrentMonth(int seconds);
+    string setBeginPreviousMonth(int seconds);
+    string setEndPreviousMonth(int seconds);
+
 public:
     int getCurrentTime();
     bool isCorrectDate(string date);
     int calculateManualDateToSeconds(string date);
     string calculateSecondsToManualDate(int seconds);
     int calculateBeginOfCurrentMonth();
-    string setBeginCurrentMonth(int seconds);
+
+    int calculateBeginOfPreviousMonth();
+    int calculateEndOfPreviuosMonth();
 };
 
 #endif // TIMEMANAGER_H

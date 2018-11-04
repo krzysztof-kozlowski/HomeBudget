@@ -24,15 +24,18 @@ class ExpenseManager {
     double enterAmount();
     double checkValueOfAmount(string amount);
 
+    void showExpensesList(int startDate, int endDate);
+    double calculateSumOfExpenses(int startDate, int endDate);
+
 public:
     ExpenseManager(string fileNameWithExpenses, int IDLOGGEDUSER) : fileWithExpenses(fileNameWithExpenses), idLoggedUser(IDLOGGEDUSER) {
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
     };
     void addExpense();
 
-    void showExpensesSummary();
-    void showExpensesList(int startDate, int endDate);
-    double calculateSumOfExpenses(int startDate, int endDate);
+    void showExpensesSummaryCurrentMonth();
+    void showExpensesSummaryPreviousMonth();
+
     double getSumOfExpenses();
 };
 

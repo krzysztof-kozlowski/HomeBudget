@@ -25,15 +25,19 @@ class IncomeManager {
     double enterAmount();
     double checkValueOfAmount(string amount);
 
+    void showIncomesList(int startDate, int endDate);
+    double calculateSumOfIncomes(int startDate, int endDate);
+
 public:
     IncomeManager(string fileNameWithIncomes, int IDLOGGEDUSER) : fileWithIncomes(fileNameWithIncomes), idLoggedUser(IDLOGGEDUSER) {
         fileWithIncomes.loadIncomesLoggedUserFromFile(incomes, idLoggedUser);
     };
     void addIncome();
 
-    void showIncomesSummary();
-    void showIncomesList(int startDate, int endDate);
-    double calculateSumOfIncomes(int startDate, int endDate);
+    void showIncomesSummaryCurrentMonth();
+    void showIncomesSummaryPreviousMonth();
+    void showIncomesSummarySelectedPeriod();
+
     double getSumOfIncomes();
 };
 

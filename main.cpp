@@ -44,10 +44,10 @@ int main() {
                     homeBudget.checkCurrentMonthBalance();
                     break;
                 case '4':
-                    ;
+                    homeBudget.checkPreviousMonthBalance();
                     break;
                 case '5':
-                    ;
+                    homeBudget.checkSelectedPeriodBalance();
                     break;
                 case '6':
                     homeBudget.passwordChangeLoggedUser();
