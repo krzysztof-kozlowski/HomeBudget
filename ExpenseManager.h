@@ -24,6 +24,9 @@ class ExpenseManager {
     double enterAmount();
     double checkValueOfAmount(string amount);
 
+    void showExpensesList(int startDate, int endDate);
+    double calculateSumOfExpenses(int startDate, int endDate);
+
 public:
     ExpenseManager(string fileNameWithExpenses, int IDLOGGEDUSER) : fileWithExpenses(fileNameWithExpenses), idLoggedUser(IDLOGGEDUSER) {
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
@@ -32,8 +35,7 @@ public:
 
     void showExpensesSummaryCurrentMonth();
     void showExpensesSummaryPreviousMonth();
-    void showExpensesList(int startDate, int endDate);
-    double calculateSumOfExpenses(int startDate, int endDate);
+
     double getSumOfExpenses();
 };
 
