@@ -69,7 +69,8 @@ void FileWithIncomes::loadIncomesLoggedUserFromFile(vector <Income> &incomes, in
             if (AuxMethods::conversionStringToInt(userId) == idLoggedUser) {
                 Income income = getIncomeInfoFromFile(xml);
                 incomes.push_back(income);
-            }
+            } else
+                xml.OutOfElem();
         }
     }
 }
@@ -99,4 +100,3 @@ Income FileWithIncomes::getIncomeInfoFromFile(CMarkup& xml) {
 
     return income;
 }
-
