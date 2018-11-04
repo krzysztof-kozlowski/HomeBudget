@@ -2,10 +2,6 @@
 #define INCOMEMANAGER_H
 
 #include <iostream>
-#include <vector>
-#include <windows.h>
-#include <sstream>
-#include <stdexcept>
 
 #include "FileWithIncomes.h"
 #include "Income.h"
@@ -16,7 +12,6 @@
 class IncomeManager {
     const int idLoggedUser;
     double sumOfIncomes;
-
     FileWithIncomes fileWithIncomes;
     TimeManager timeManager;
     vector <Income> incomes;
@@ -24,7 +19,6 @@ class IncomeManager {
     Income enterDataOfNewIncome();
     double enterAmount();
     double checkValueOfAmount(string amount);
-
     void showIncomesList(int startDate, int endDate);
     double calculateSumOfIncomes(int startDate, int endDate);
 
@@ -33,11 +27,9 @@ public:
         fileWithIncomes.loadIncomesLoggedUserFromFile(incomes, idLoggedUser);
     };
     void addIncome();
-
     void showIncomesSummaryCurrentMonth();
     void showIncomesSummaryPreviousMonth();
     void showIncomesSummarySelectedPeriod(int startDate, int endDate);
-
     double getSumOfIncomes();
 };
 

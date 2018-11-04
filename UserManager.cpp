@@ -114,9 +114,3 @@ int UserManager::getIdLoggedUser(){
 int UserManager::userLogout(){
     this->idLoggedUser = 0;
 }
-
-void UserManager::wyswietl(){
-    for(int i = 0; i < users.size(); i++){
-        cout << users[i].getLogin() << endl;
-    }
-}

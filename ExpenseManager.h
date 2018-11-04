@@ -2,13 +2,9 @@
 #define EXPENSEMANAGER_H
 
 #include <iostream>
-#include <vector>
-#include <windows.h>
-#include <sstream>
 
 #include "FileWithExpenses.h"
 #include "Expense.h"
-#include "UserManager.h"
 #include "TimeManager.h"
 #include "AuxMethods.h"
 
@@ -22,7 +18,6 @@ class ExpenseManager {
     Expense enterDataOfNewExpense();
     double enterAmount();
     double checkValueOfAmount(string amount);
-
     void showExpensesList(int startDate, int endDate);
     double calculateSumOfExpenses(int startDate, int endDate);
 
@@ -31,11 +26,9 @@ public:
         fileWithExpenses.loadExpensesLoggedUserFromFile(expenses, idLoggedUser);
     };
     void addExpense();
-
     void showExpensesSummaryCurrentMonth();
     void showExpensesSummaryPreviousMonth();
     void showExpensesSummarySelectedPeriod(int startDate, int endDate);
-
     double getSumOfExpenses();
 };
 

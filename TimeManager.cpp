@@ -8,6 +8,7 @@ int TimeManager::getCurrentTime() {
 }
 
 bool TimeManager::isCorrectDate(string date) {
+    //format date yyyy-mm-dd
     if ((isWellFormatted(date) == true) && (isCorrectDateValues(date) == true) && (isCorrectPeriod(date) == true))
         return true;
     else

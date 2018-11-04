@@ -65,7 +65,7 @@ void ExpenseManager::showExpensesSummaryCurrentMonth() {
     showExpensesList(startDate, endDate);
     cout << endl;
     sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
-    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "Suma wydatkow wynosi: " << fixed << setprecision(2) << sumOfExpenses << endl;
     cout << "---------------------------" << endl << endl;
 }
 
@@ -77,7 +77,7 @@ void ExpenseManager::showExpensesSummaryPreviousMonth() {
     showExpensesList(startDate, endDate);
     cout << endl;
     sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
-    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "Suma wydatkow wynosi: " << fixed << setprecision(2) << sumOfExpenses << endl;
     cout << "---------------------------" << endl << endl;;
 }
 
@@ -87,7 +87,7 @@ void ExpenseManager::showExpensesSummarySelectedPeriod(int startDate, int endDat
     showExpensesList(startDate, endDate);
     cout << endl;
     sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
-    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "Suma wydatkow wynosi: " << fixed << setprecision(2) << sumOfExpenses << endl;
     cout << "---------------------------" << endl << endl;;
 }
 
@@ -96,10 +96,9 @@ void ExpenseManager::showExpensesList(int startDate, int endDate) {
 
     for(int i = 0; i < expenses.size(); i++) {
         if ((expenses[i].getDate() >= startDate) && (expenses[i].getDate() <= endDate)) {
-            cout << expenses[i].getUserId() << "  /  ";
             cout << timeManager.calculateSecondsToManualDate(expenses[i].getDate()) << "  /  ";
             cout << expenses[i].getItem() << "  /  ";
-            cout << expenses[i].getAmount() << endl;
+            cout << fixed << setprecision(2) << expenses[i].getAmount() << endl;
         }
     }
 }
