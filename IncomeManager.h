@@ -16,12 +16,12 @@
 class IncomeManager {
     const int idLoggedUser;
     double sumOfIncomes;
+
     FileWithIncomes fileWithIncomes;
     TimeManager timeManager;
     vector <Income> incomes;
 
     Income enterDataOfNewIncome();
-    int enterDate();
     double enterAmount();
     double checkValueOfAmount(string amount);
 
@@ -36,7 +36,7 @@ public:
 
     void showIncomesSummaryCurrentMonth();
     void showIncomesSummaryPreviousMonth();
-    void showIncomesSummarySelectedPeriod();
+    void showIncomesSummarySelectedPeriod(int startDate, int endDate);
 
     double getSumOfIncomes();
 };

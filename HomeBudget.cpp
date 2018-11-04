@@ -50,7 +50,14 @@ void HomeBudget::checkPreviousMonthBalance() {
     system("pause");
 }
 
-void HomeBudget::checkSelectedPeriodBalance(){
-    incomeManager->showIncomesSummarySelectedPeriod();
-    expenseManager->showExpensesSummarySelectedPeriod();
+void HomeBudget::checkSelectedPeriodBalance() {
+    timeManager = new TimeManager();
+    int startDate = timeManager->setStartDate();
+    int endDate = timeManager->setEndDate();
+
+    incomeManager->showIncomesSummarySelectedPeriod(startDate, endDate);
+    expenseManager->showExpensesSummarySelectedPeriod(startDate, endDate);
+
+    cout << "SALDO wynosi: " << incomeManager->getSumOfIncomes() - expenseManager->getSumOfExpenses() << endl << endl;
+    system("pause");
 }

@@ -23,7 +23,7 @@ Income IncomeManager::enterDataOfNewIncome() {
     if (dateDecision == 't')
         date = timeManager.getCurrentTime();
     else if (dateDecision == 'n')
-        date = enterDate();
+        date = timeManager.enterDate();
 
     cout << "Wpisz czego dotyczy ten przychod: ";
     cin.sync();
@@ -33,18 +33,6 @@ Income IncomeManager::enterDataOfNewIncome() {
     Income income(incomeId, userId, date, AuxMethods::changeFirstLetterOnUpperRestOnLower(item), amount);
 
     return income;
-}
-
-int IncomeManager::enterDate() {
-    string date;
-
-    do {
-        cout << "Wpisz date <rrrr-mm-dd>: ";
-        cin.sync();
-        getline(cin, date);
-    } while(!timeManager.isCorrectDate(date));
-
-    return timeManager.calculateManualDateToSeconds(date);
 }
 
 double IncomeManager::enterAmount() {
@@ -95,14 +83,7 @@ void IncomeManager::showIncomesSummaryPreviousMonth() {
     cout << "---------------------------" << endl << endl;
 }
 
-void IncomeManager::showIncomesSummarySelectedPeriod() {
-    system("cls");
-    cout << "START OKRESU // ";
-    int startDate = enterDate();
-
-    cout << "KONIEC OKRESU // ";
-    int endDate = enterDate();
-
+void IncomeManager::showIncomesSummarySelectedPeriod(int startDate, int endDate) {
     cout << endl;
     cout << " >>> LISTA PRZYCHODOW <<<" << endl << endl;
     showIncomesList(startDate, endDate);
@@ -143,7 +124,3 @@ double IncomeManager::calculateSumOfIncomes(int startDate, int endDate) {
 double IncomeManager::getSumOfIncomes() {
     return sumOfIncomes;
 }
-
-
-
-

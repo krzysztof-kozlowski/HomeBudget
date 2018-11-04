@@ -23,7 +23,7 @@ Expense ExpenseManager::enterDataOfNewExpense() {
     if (dateDecision == 't')
         date = timeManager.getCurrentTime();
     else if (dateDecision == 'n')
-        date = enterDate();
+        date = timeManager.enterDate();
 
     cout << "Wpisz czego dotyczy ten wydatek: ";
     cin.sync();
@@ -33,18 +33,6 @@ Expense ExpenseManager::enterDataOfNewExpense() {
     Expense expense(expenseId, userId, date, AuxMethods::changeFirstLetterOnUpperRestOnLower(item), amount);
 
     return expense;
-}
-
-int ExpenseManager::enterDate() {
-    string date;
-
-    do {
-        cout << "Wpisz date <rrrr-mm-dd>: ";
-        cin.sync();
-        getline(cin, date);
-    } while(!timeManager.isCorrectDate(date));
-
-    return timeManager.calculateManualDateToSeconds(date);
 }
 
 double ExpenseManager::enterAmount() {
@@ -93,8 +81,14 @@ void ExpenseManager::showExpensesSummaryPreviousMonth() {
     cout << "---------------------------" << endl << endl;;
 }
 
-void ExpenseManager::showExpensesSummarySelectedPeriod(){
-;
+void ExpenseManager::showExpensesSummarySelectedPeriod(int startDate, int endDate) {
+    cout << endl;
+    cout << " >>> LISTA WYDATKOW <<<" << endl << endl;
+    showExpensesList(startDate, endDate);
+    cout << endl;
+    sumOfExpenses = calculateSumOfExpenses(startDate, endDate);
+    cout << "Suma wydatkow wynosi: " << sumOfExpenses << endl;
+    cout << "---------------------------" << endl << endl;;
 }
 
 void ExpenseManager::showExpensesList(int startDate, int endDate) {
